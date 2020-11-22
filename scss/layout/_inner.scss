@@ -1,0 +1,30 @@
+/* 上下padding調整 */
+.section {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	&:first-child {
+		padding-top: 100px;
+	}
+}
+
+/* 左右padding調整 */
+.inner{
+	width : 560px ;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 0 auto;
+	max-width: 100%;
+	height: inherit;
+}
+
+@include media-up(m) {
+	.section {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}	
+	.inner{
+		width : $layout-width-inner;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+}

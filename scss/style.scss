@@ -1,0 +1,28 @@
+/*******************
+  -------- 各種変数 */
+@import "setting/_style";
+
+/*******************
+  -------- mixin定義 */
+@import "function/_style";
+
+/*******************
+  ---- リセットcss.基本css */
+@import "foundation/_style";
+
+/*******************
+  ---- inner section設定 */
+@import "layout/_style";
+
+/*******************
+  ---- コンポーネント */
+@import "component/_style";
+
+/*******************
+  -------- 各エレメント */
+  @import "element/_style";
+
+/*******************
+  -------- 各ページ内要素 */
+@import "project/_style";
+

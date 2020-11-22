@@ -1,0 +1,21 @@
+// PC
+.hp-pc {
+  display: none;
+  @include media-up(m) {
+    display: block;
+}
+}
+
+.hp-sp {
+  display: block;
+  @include media-up(m) {
+      display: none;
+  }
+}
+
+.hp-xsp {
+  display: inline;
+  @include media-up(xs) {
+      display: none;
+    }
+}

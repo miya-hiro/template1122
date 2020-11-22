@@ -1,0 +1,104 @@
+// ブレークポイント
+// Breakpoint
+//---------------------------------------
+
+$breakpoints-up: (
+  'xxs': 'print,screen and (min-width: 360px)',
+  'xs': 'print,screen and (min-width: 481px)',
+  'sm': 'print,screen and (min-width: 641px)',
+  'md': 'print,screen and (min-width: 769px)',
+  'm': 'print,screen and (min-width: 960px)',
+  'lg': 'print,screen and (min-width: 1025px)',
+  'xlg': 'print,screen and (min-width: 1221px)',
+  'xxlg': 'print,screen and (min-width: 1451px)',
+) !default;
+$breakpoints-down: (
+  'xxlg': 'print,screen and (max-width: 1450px)',
+  'xlg': 'print,screen and (max-width: 1220px)',
+  'lg': 'print,screen and (max-width: 1024px)',
+  'm': 'print,screen and (max-width: 959px)',
+  'md': 'print,screen and (max-width: 768px)',
+  'sm': 'print,screen and (max-width: 640px)',
+  'xs': 'print,screen and (max-width: 480px)',
+  'xxs': 'print,screen and (max-width: 359px)',
+) !default;
+
+// Media queries 481px以上 タブレット
+@mixin media-up($breakpoint: xs) {
+  @media #{map-get($breakpoints-up, $breakpoint)} {
+    @content;
+  }
+}
+// Media queries 960px以上 PC
+@mixin media-up($breakpoint: m) {
+  @media #{map-get($breakpoints-down, $breakpoint)} {
+    @content;
+  }
+}
+
+//フォントサイズvw指定
+@function get_vw($size, $viewport:320) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size:10) {
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+//文字詰め・両端揃え
+@mixin good_ft(){
+  font-feature-settings: "palt";
+  text-align: justify;
+}
+
+//画像中央揃え・サイズ揃え
+@mixin good_pic( $pt: 70%  ){
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  padding-top: $pt;
+  & > img {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateY( -50% );
+    object-fit: cover;
+    font-family: 'object-fit: cover;' /*ie*/
+  }
+}
+
+@mixin mask( $color: #fff){
+    content: '';
+    background: $color;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    backface-visibility:hidden;
+}
+
+// clearfix
+@mixin clearfix() {
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+//usage: @include transition([property],[duration],[easing]);
+@mixin transition($property: all, $duration: 0.3s, $ease: ease) {
+  transition: $property $duration $ease;
+}
+@mixin transition2($x1,$x2,$x3,$x4) {
+  transition: $x1, $x2, $x3, $x4;
+}
