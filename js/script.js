@@ -22,26 +22,12 @@ jQuery(function() {
 			jQuery("body").attr("data-scroll-bottom", "false");
 		}
 	});
-
+	
 	/* ドロワー */
-	jQuery(".js-drawer").on("click", function(e) {
-		e.preventDefault();
-		let targetClass = jQuery(this).attr("data-target");
-		let ariaControls = jQuery(this).attr("aria-controls");
+	jQuery(".js-drawer").on("click", function() {
+		var targetClass = jQuery(this).attr("data-target");
 		jQuery("." + targetClass).toggleClass("is-checked");
 
-		if (jQuery("#" + ariaControls).attr("aria-hidden") === "true") {
-			jQuery("#" + ariaControls).attr("aria-hidden", "false");
-		} else {
-			jQuery("#" + ariaControls).attr("aria-hidden", "ture");
-		}
-
-		if (jQuery(this).attr("aria-expanded") === "true") {
-			jQuery(this).attr("aria-expanded", "false");
-		} else {
-			jQuery(this).attr("aria-expanded", "ture");
-		}
-		return false;
 	});
 
 	/* スムーススクロール */
